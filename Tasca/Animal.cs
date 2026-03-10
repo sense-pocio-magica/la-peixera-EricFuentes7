@@ -4,15 +4,45 @@ namespace Tasca;
 
 public abstract class Animal:AnimalMaritim
 {
-    private int posX;
-    private int posY;
-    private Vector direccio;
-    private Sexe sex;
-    private bool viu;
+    protected int posX;
+    protected int posY;
+    protected Vector direccio;
+    protected Sexe sex;
+    protected bool viu;
 
+    public Animal(int pX, int pY, Vector dir, Sexe sx, bool vi)
+    {
+        posX = pX;
+        posY = pY;
+        direccio = dir;
+        sex = sx;
+        viu = vi;
+    }
     public virtual void Mou()
     {
+        if (posX + direccio.X > 20)
+        {
+            posX = 0;
+        } else if (posX + direccio.X < 0)
+        {
+            posX = 20;
+        }
+        else
+        {
+            posX += direccio.X;
+        }
         
+        if (posY + direccio.Y > 20)
+        {
+            posY = 0;
+        } else if (posY + direccio.Y < 0)
+        {
+            posY = 20;
+        }
+        else
+        {
+            posY += direccio.Y;
+        }
     }
 
     public virtual void Interactua(Animal animalAInteractuar)

@@ -4,10 +4,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        List<Animal> animals = new List<Animal>();
+        List<AnimalMaritim> animals = new List<AnimalMaritim>();
 
         Peixera joc = new Peixera(animals, 20, 20);
         
-        joc.Començar();
+        joc.Inicialitza();
     }
 }
