@@ -9,14 +9,15 @@ public abstract class Animal:AnimalMaritim
     protected Vector direccio;
     protected Sexe sex;
     protected bool viu;
-
-    public Animal(int pX, int pY, Vector dir, Sexe sx, bool vi)
+    protected string inicial;
+    public Animal(int pX, int pY, Vector dir, Sexe sx, bool vi, string ini)
     {
         posX = pX;
         posY = pY;
         direccio = dir;
         sex = sx;
         viu = vi;
+        inicial = ini;
     }
     public virtual void Mou()
     {
@@ -50,4 +51,13 @@ public abstract class Animal:AnimalMaritim
         
     }
 
+    public string RetornarInicials()
+    {
+        return inicial;
+    }
+
+    public (int, int) RetornarPosicio()
+    {
+        return (posX, posY);
+    }
 }

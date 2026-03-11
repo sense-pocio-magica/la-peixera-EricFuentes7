@@ -2,7 +2,7 @@ namespace Tasca;
 
 public class Peixera
 {
-    private List<AnimalMaritim> animals;
+    private List<Animal> animals;
     private int limitX;
     private int limitY;
     private string[,] mapa = new string[,]
@@ -26,11 +26,10 @@ public class Peixera
         {"#", "#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
         {"#", "#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
         {"#", "#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
-        {"#", "#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
         {"#", "#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"}
         
     };
-    public Peixera(List<AnimalMaritim> anim, int limX, int limY)
+    public Peixera(List<Animal> anim, int limX, int limY)
     {
         animals = anim;
         limitX = limX;
@@ -44,17 +43,28 @@ public class Peixera
 
     public void Inicialitza()
     {
-        for (int i = 0; i < mapa.GetLength(0); i++) 
-        { 
-            for (int j = 0; j < mapa.GetLength(1); j++) 
-            { 
-                Console.Write(mapa[i, j]); 
+        for (int i = 0; i < mapa.GetLength(0); i++)
+        {
+            for (int j = 0; j < mapa.GetLength(1); j++)
+            {
+                mapa[i, j] = ".";
             }
-
-            Console.WriteLine();
-        }  
+        }
         
-        
+        foreach (var a in animals)
+        {
+            if (a is Pop p)
+            {
+                p.assignarBeCoordenades();
+            }
+            else
+            {
+                (int X, int Y) pos = a.RetornarPosicio();
+                mapa[pos.X, pos.Y] = a.RetornarInicials();
+            }
+            
+            
+        }
     }
     
     public void MoureTots()
@@ -69,6 +79,14 @@ public class Peixera
 
     public void MostrarResultats()
     {
-        
+        for (int i = 0; i < mapa.GetLength(0); i++) 
+        { 
+            for (int j = 0; j < mapa.GetLength(1); j++) 
+            { 
+                Console.Write(mapa[i, j]+"\t"); 
+            }
+
+            Console.WriteLine();
+        }  
     }
 }
