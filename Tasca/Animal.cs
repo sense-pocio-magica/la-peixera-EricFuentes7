@@ -1,8 +1,6 @@
-using System.Numerics;
-
 namespace Tasca;
 
-public abstract class Animal:AnimalMaritim
+public abstract class Animal : AnimalMaritim
 {
     protected int posX;
     protected int posY;
@@ -10,6 +8,7 @@ public abstract class Animal:AnimalMaritim
     protected Sexe sex;
     protected bool viu;
     protected string inicial;
+
     public Animal(int pX, int pY, Vector dir, Sexe sx, bool vi, string ini)
     {
         posX = pX;
@@ -19,36 +18,26 @@ public abstract class Animal:AnimalMaritim
         viu = vi;
         inicial = ini;
     }
+
     public virtual void Mou()
     {
         if (posX + direccio.X > 19)
-        {
             posX = 0;
-        } else if (posX + direccio.X < 0)
-        {
+        else if (posX + direccio.X < 0)
             posX = 19;
-        }
         else
-        {
             posX += direccio.X;
-        }
-        
+
         if (posY + direccio.Y > 19)
-        {
             posY = 0;
-        } else if (posY + direccio.Y < 0)
-        {
+        else if (posY + direccio.Y < 0)
             posY = 19;
-        }
         else
-        {
             posY += direccio.Y;
-        }
     }
 
-    public virtual void Interactua(Animal animalAInteractuar)
+    public virtual void Interactua(Animal altreAnimal)
     {
-        
     }
 
     public string RetornarInicials()
@@ -56,8 +45,26 @@ public abstract class Animal:AnimalMaritim
         return inicial;
     }
 
-    public (int, int) RetornarPosicio()
+
+public (int, int) RetornarPosicio() {return (posX, posY);}
+
+public bool EstaViu()
+{
+    return viu;
+}
+
+public void Morir()
+{
+    viu = false;
+}
+
+    public Sexe QuinSexeEs()
     {
-        return (posX, posY);
+        return sex;
+    }
+
+    public Vector RetornarDireccio()
+    {
+        return direccio;
     }
 }
