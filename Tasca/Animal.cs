@@ -21,24 +21,24 @@ public abstract class Animal:AnimalMaritim
     }
     public virtual void Mou()
     {
-        if (posX + direccio.X > 20)
+        if (posX + direccio.X > 19)
         {
             posX = 0;
         } else if (posX + direccio.X < 0)
         {
-            posX = 20;
+            posX = 19;
         }
         else
         {
             posX += direccio.X;
         }
         
-        if (posY + direccio.Y > 20)
+        if (posY + direccio.Y > 19)
         {
             posY = 0;
         } else if (posY + direccio.Y < 0)
         {
-            posY = 20;
+            posY = 19;
         }
         else
         {

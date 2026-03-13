@@ -41,15 +41,19 @@ public class Peixera
         
     }
 
-    public void Inicialitza()
+    private void ConvertirAPunts()
     {
         for (int i = 0; i < mapa.GetLength(0); i++)
         {
             for (int j = 0; j < mapa.GetLength(1); j++)
             {
-                mapa[i, j] = ".";
+                mapa[i, j] = " ";
             }
         }
+    }
+    public void Inicialitza()
+    {
+        ConvertirAPunts();
         
         foreach (var a in animals)
         {
@@ -57,19 +61,22 @@ public class Peixera
             {
                 p.assignarBeCoordenades();
             }
-            else
-            {
                 (int X, int Y) pos = a.RetornarPosicio();
                 mapa[pos.X, pos.Y] = a.RetornarInicials();
-            }
-            
-            
         }
     }
     
     public void MoureTots()
     {
-        
+        ConvertirAPunts();
+        foreach (var a in animals)
+        {
+            
+            a.Mou();
+            (int X, int Y) pos = a.RetornarPosicio();
+            pos = a.RetornarPosicio();
+            mapa[pos.X, pos.Y] = a.RetornarInicials();
+        }
     }
 
     public void Interactua()

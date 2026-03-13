@@ -6,6 +6,8 @@ internal class Program
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
+        //Console. BackgroundColor = ConsoleColor.Gray;
+        //Console.Clear();
         List<Animal> animals = new List<Animal>();
 
         for (int i = 0; i < 141; i++)
@@ -46,6 +48,10 @@ internal class Program
         Peixera joc = new Peixera(animals, 20, 20);
         
         joc.Inicialitza();
+        joc.MostrarResultats();
+        joc.MoureTots();
+        Thread.Sleep(2000);
+        Console.WriteLine();
         joc.MostrarResultats();
     }
 }
